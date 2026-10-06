@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f7a4d">
+<title>ShopFlow – Smart Shop. Better Growth.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+  <symbol id="i-sales" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6"/></symbol>
+  <symbol id="i-inventory" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10"/></symbol>
+  <symbol id="i-expenses" viewBox="0 0 24 24"><path d="M3 8h16a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2zM3 8l2-4h12M16 14h2"/></symbol>
+  <symbol id="i-customers" viewBox="0 0 24 24"><path d="M16 20v-1a4 4 0 00-4-4H7a4 4 0 00-4 4v1M9.5 11a3.5 3.5 0 100-7 3.5 3.5 0 000 7M21 20v-1a4 4 0 00-3-3.9M16 4.2a3.5 3.5 0 010 6.6"/></symbol>
+  <symbol id="i-reports" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 5v4M9 15v4"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M5 12h.01M12 12h.01M19 12h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 1112 0c0 5 2 6 2 6H4s2-1 2-6M10 19a2 2 0 004 0"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 18a7 7 0 100-14 7 7 0 000 14M20 20l-4-4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+</svg>
+
+<a class="skip" href="#content">Skip to content</a>
+
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard" aria-label="ShopFlow home">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#1f7a4d"/><path d="M8 13h16l-1.5-5h-13zM9.5 13v11h13V13" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 22c0-4 2-6 6-6 0 4-2 6-6 6z" fill="#fff"/></svg>
+      <span><strong>ShopFlow</strong><small>Smart Shop. Better Growth.</small></span>
+    </a>
+    <nav id="sideNav" class="side-nav" aria-label="Main"></nav>
+    <div class="shopcard">
+      <p class="small muted">My Shop</p>
+      <strong id="shopName"></strong>
+      <span id="shopPlace" class="small muted"></span>
+      <span class="status-pill"><i></i>Business Mode</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <a class="brand-m" href="#dashboard" aria-label="ShopFlow home">
+        <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#1f7a4d"/><path d="M8 13h16l-1.5-5h-13zM9.5 13v11h13V13" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 22c0-4 2-6 6-6 0 4-2 6-6 6z" fill="#fff"/></svg>
+      </a>
+      <label class="search">
+        <span class="sr">Search products</span>
+        <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="globalSearch" type="search" placeholder="Search products" autocomplete="off">
+      </label>
+      <div class="pop-wrap date">
+        <button class="btn sm" aria-expanded="false" aria-controls="dateMenu"><span id="hdDate"></span></button>
+        <div class="pop" id="dateMenu" hidden>
+          <p class="pop-h">View reports for</p>
+          <button class="pop-item" data-act="range" data-r="7">Last 7 days</button>
+          <button class="pop-item" data-act="range" data-r="month">This month</button>
+        </div>
+      </div>
+      <div class="pop-wrap">
+        <button class="icon-btn" id="bellBtn" aria-label="Notifications" aria-expanded="false" aria-controls="bellMenu">
+          <svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg><span class="badge" id="bellBadge" hidden></span>
+        </button>
+        <div class="pop" id="bellMenu" hidden></div>
+      </div>
+      <div class="pop-wrap">
+        <button class="user-btn" aria-label="Account menu" aria-expanded="false" aria-controls="userMenu">
+          <span class="avatar" id="avatar"></span>
+          <span class="who"><strong id="uName"></strong><small>Owner</small></span>
+        </button>
+        <div class="pop" id="userMenu" hidden>
+          <a class="pop-item" href="#settings">Business settings</a>
+          <button class="pop-item" id="themeBtn" data-act="theme">Switch to dark mode</button>
+          <button class="pop-item" data-act="future" data-name="Sign out">Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" class="content">
+
+      <!-- DASHBOARD -->
+      <section id="view-dashboard" class="view">
+        <div class="page-head">
+          <div><h1 tabindex="-1" id="greeting"></h1><p class="sub">Here's what's happening with your shop today.</p></div>
+          <span class="sub" id="todayDate"></span>
+        </div>
+        <div class="dash">
+          <article class="card kpi-sales a-s">
+            <h2>Today's Sales</h2>
+            <p class="big" id="kSales"></p>
+            <p class="meta" id="kSalesMeta"></p>
+          </article>
+          <article class="card a-p">
+            <h2>Today's Profit</h2>
+            <p class="big" id="kProfit"></p>
+            <p class="small muted">Estimated profit after expenses</p>
+            <p class="meta" id="kProfitMeta"></p>
+          </article>
+          <article class="card a-l">
+            <h2>Low Stock</h2>
+            <p class="big"><span id="kLowCount"></span></p>
+            <p class="small muted" id="kLowText">products need attention</p>
+            <ul class="low-list" id="lowList"></ul>
+            <button class="btn sm" data-act="inv-filter" data-f="low">Review stock</button>
+          </article>
+          <article class="card a-a">
+            <h2>Quick Actions</h2>
+            <div class="qa">
+              <button class="btn primary" data-act="add-sale">+ Add Sale</button>
+              <button class="btn" data-act="add-product">+ Add Product</button>
+              <button class="btn" data-act="add-expense">Record Expense</button>
+              <button class="btn" data-act="inv-filter" data-f="all">View Inventory</button>
+            </div>
+          </article>
+          <article class="card a-c">
+            <div class="card-head"><div><h2>Sales Overview</h2><p class="small muted">Last 7 days</p></div></div>
+            <div id="chart"></div>
+          </article>
+          <article class="card a-r">
+            <div class="card-head"><h2>Recent Sales</h2><a class="btn sm" href="#sales">View All</a></div>
+            <div id="recent"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SALES -->
+      <section id="view-sales" class="view" hidden>
+        <div class="page-head"><div><h1 tabindex="-1">Sales</h1><p class="sub">Add a sale and see everything sold today.</p></div></div>
+        <div class="two">
+          <form id="saleForm" class="card" novalidate>
+            <h2>New sale</h2>
+            <div class="field"><label for="saleSearch">Find a product</label><input id="saleSearch" type="search" placeholder="Type a product name" autocomplete="off"></div>
+            <ul class="results" id="saleResults"></ul>
+            <div id="cart"></div>
+            <div class="field"><label for="saleCust">Customer (optional)</label><select id="saleCust"></select></div>
+            <fieldset class="field"><legend>Payment method</legend><div class="seg" id="payOpts"></div><p class="err" id="payErr"></p></fieldset>
+            <div class="total-row"><span>Total</span><strong id="saleTotal">NPR 0</strong></div>
+            <p class="err" id="saleErr" role="alert"></p>
+            <button class="btn primary lg" type="submit">Complete Sale</button>
+          </form>
+          <div class="card"><h2>Sold today</h2><div id="todaySales"></div></div>
+        </div>
+      </section>
+
+      <!-- INVENTORY -->
+      <section id="view-inventory" class="view" hidden>
+        <div class="page-head"><div><h1 tabindex="-1">Inventory</h1><p class="sub">Know what you have and what to restock.</p></div><button class="btn primary" data-act="add-product">+ Add Product</button></div>
+        <div class="card">
+          <div class="toolbar">
+            <label class="search wide"><span class="sr">Search products</span><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input id="invSearch" type="search" placeholder="Search products" autocomplete="off"></label>
+            <div class="pills" id="invFilters">
+              <button class="pill" data-act="filter" data-f="all">All</button>
+              <button class="pill" data-act="filter" data-f="in">In Stock</button>
+              <button class="pill" data-act="filter" data-f="low">Low Stock</button>
+              <button class="pill" data-act="filter" data-f="out">Out of Stock</button>
+            </div>
+          </div>
+          <div id="invList"></div>
+        </div>
+      </section>
+
+      <!-- EXPENSES -->
+      <section id="view-expenses" class="view" hidden>
+        <div class="page-head"><div><h1 tabindex="-1">Expenses</h1><p class="sub">Keep track of what the shop spends.</p></div><button class="btn primary" data-act="add-expense">+ Add Expense</button></div>
+        <div class="stats two-col" id="expSummary"></div>
+        <div class="card"><div id="expList"></div></div>
+      </section>
+
+      <!-- CUSTOMERS -->
+      <section id="view-customers" class="view" hidden>
+        <div class="page-head"><div><h1 tabindex="-1">Customers</h1><p class="sub">The people who shop with you.</p></div><button class="btn primary" data-act="add-customer">+ Add Customer</button></div>
+        <div class="card"><div id="custList"></div></div>
+      </section>
+
+      <!-- REPORTS -->
+      <section id="view-reports" class="view" hidden>
+        <div class="page-head">
+          <div><h1 tabindex="-1">Reports</h1><p class="sub">How your business is doing.</p></div>
+          <div class="field inline"><label for="repRange">Date range</label><select id="repRange"><option value="7">Last 7 days</option><option value="month">This month</option></select></div>
+        </div>
+        <div class="pills tabs" id="repTabs" role="tablist" aria-label="Report type">
+          <button class="pill" role="tab" data-act="rep-tab" data-tab="sales">Sales</button>
+          <button class="pill" role="tab" data-act="rep-tab" data-tab="profit">Profit</button>
+          <button class="pill" role="tab" data-act="rep-tab" data-tab="expenses">Expenses</button>
+          <button class="pill" role="tab" data-act="rep-tab" data-tab="products">Products</button>
+        </div>
+        <div class="stats" id="repStats"></div>
+        <div id="repBody"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="view-settings" class="view" hidden>
+        <div class="page-head"><div><h1 tabindex="-1">Settings</h1><p class="sub">Keep your shop details up to date.</p></div></div>
+        <div class="settings">
+          <form class="card" id="bizForm" novalidate>
+            <h2>Business information</h2>
+            <div class="field"><label for="sname">Business name</label><input id="sname" name="sname" aria-describedby="e-sname"><p class="err" id="e-sname" data-err="sname"></p></div>
+            <div class="field"><label for="sowner">Owner name</label><input id="sowner" name="sowner" aria-describedby="e-sowner"><p class="err" id="e-sowner" data-err="sowner"></p></div>
+            <div class="field"><label for="splace">Location</label><input id="splace" name="splace"></div>
+            <div class="field"><label for="stype">Business category</label><select id="stype" name="stype"></select></div>
+            <button class="btn primary" type="submit">Save changes</button>
+          </form>
+          <div class="card">
+            <h2>Currency</h2>
+            <div class="field"><label for="cur">Currency</label><select id="cur" disabled><option>NPR – Nepalese Rupee</option></select><p class="small muted">More currencies are coming soon.</p></div>
+            <h2>Notifications</h2>
+            <label class="check"><input type="checkbox" id="alertsOn"> Alert me when stock is low</label>
+            <div class="field"><label for="lowAt">Count a product as low when it has this many or fewer</label><input id="lowAt" type="number" min="1" step="1" inputmode="numeric"></div>
+            <h2>Appearance</h2>
+            <div class="field"><label for="themeSel">Theme</label><select id="themeSel"><option value="light">Light</option><option value="dark">Dark</option></select></div>
+            <h2>Account</h2>
+            <div class="row-btns"><button class="btn" data-act="future" data-name="Changing your password">Change password</button><button class="btn" data-act="future" data-name="Sign out">Sign out</button></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<nav class="bottom-nav" id="bottomNav" aria-label="Quick navigation"></nav>
+
+<!-- DIALOGS -->
+<dialog id="productDlg" aria-labelledby="productTitle">
+  <form class="dlg-body" id="productForm" novalidate>
+    <h2 id="productTitle">Add product</h2>
+    <input type="hidden" name="pid">
+    <div class="field"><label for="pname">Product name</label><input id="pname" name="pname" autocomplete="off" aria-describedby="e-pname"><p class="err" id="e-pname" data-err="pname"></p></div>
+    <div class="field"><label for="pcat">Category</label><select id="pcat" name="pcat"></select></div>
+    <div class="grid2">
+      <div class="field"><label for="pprice">Selling price (NPR)</label><input id="pprice" name="pprice" type="number" min="0" step="any" inputmode="decimal" aria-describedby="e-pprice"><p class="err" id="e-pprice" data-err="pprice"></p></div>
+      <div class="field"><label for="pcost">Cost price (NPR)</label><input id="pcost" name="pcost" type="number" min="0" step="any" inputmode="decimal" aria-describedby="e-pcost"><p class="err" id="e-pcost" data-err="pcost"></p></div>
+    </div>
+    <p class="small muted hint">Leave cost price empty and we will estimate your profit for you.</p>
+    <div class="field"><label for="pstock">Quantity in stock</label><input id="pstock" name="pstock" type="number" step="1" inputmode="numeric" aria-describedby="e-pstock"><p class="err" id="e-pstock" data-err="pstock"></p></div>
+    <div class="dlg-actions"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary" type="submit">Save product</button></div>
+  </form>
+</dialog>
+
+<dialog id="expenseDlg" aria-labelledby="expenseTitle">
+  <form class="dlg-body" id="expenseForm" novalidate>
+    <h2 id="expenseTitle">Record expense</h2>
+    <div class="field"><label for="ecat">Category</label><select id="ecat" name="ecat"></select></div>
+    <div class="field"><label for="edesc">Description (optional)</label><input id="edesc" name="edesc" autocomplete="off"></div>
+    <div class="grid2">
+      <div class="field"><label for="eamt">Amount (NPR)</label><input id="eamt" name="eamt" type="number" min="0" step="any" inputmode="decimal" aria-describedby="e-eamt"><p class="err" id="e-eamt" data-err="eamt"></p></div>
+      <div class="field"><label for="edate">Date</label><input id="edate" name="edate" type="date" aria-describedby="e-edate"><p class="err" id="e-edate" data-err="edate"></p></div>
+    </div>
+    <div class="field"><label for="epay">Payment method</label><select id="epay" name="epay"></select></div>
+    <div class="dlg-actions"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary" type="submit">Save expense</button></div>
+  </form>
+</dialog>
+
+<dialog id="customerDlg" aria-labelledby="customerTitle">
+  <form class="dlg-body" id="customerForm" novalidate>
+    <h2 id="customerTitle">Add customer</h2>
+    <input type="hidden" name="cid">
+    <div class="field"><label for="cname">Customer name</label><input id="cname" name="cname" autocomplete="off" aria-describedby="e-cname"><p class="err" id="e-cname" data-err="cname"></p></div>
+    <div class="field"><label for="cphone">Phone (optional)</label><input id="cphone" name="cphone" type="tel" inputmode="tel" aria-describedby="e-cphone"><p class="err" id="e-cphone" data-err="cphone"></p></div>
+    <div class="dlg-actions"><button type="button" class="btn" data-close>Cancel</button><button class="btn primary" type="submit">Save customer</button></div>
+  </form>
+</dialog>
+
+<dialog id="askDlg" aria-labelledby="askTitle">
+  <div class="dlg-body">
+    <h2 id="askTitle"></h2><p id="askText" class="ask-text"></p>
+    <div class="dlg-actions"><button class="btn" id="askCancel" data-close>Cancel</button><button class="btn primary" id="askOk">Confirm</button></div>
+  </div>
+</dialog>
+
+<dialog id="moreDlg" aria-label="More pages">
+  <div class="dlg-body"><h2>More</h2><nav id="moreList" class="more-list" aria-label="More pages"></nav></div>
+</dialog>
+
+<div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
